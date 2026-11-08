@@ -1,3 +1,4 @@
 # Galería
-Las composiciones de la landing son ilustraciones editoriales, identificadas como tales. No son trabajos del barbero.
-Incorporar fotografías aprobadas aquí y actualizar la sección de galería en `src/app/page.tsx` usando `next/image`, texto alternativo y permisos de las personas fotografiadas.
+
+La landing utiliza el logo original y composiciones tipográficas de marca; no muestra cortes ficticios.
+Incorporar fotografías aprobadas aquí y agregar una galería en `src/app/page.tsx` usando `next/image`, texto alternativo y permisos de las personas fotografiadas.

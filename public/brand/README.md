@@ -1,3 +1,4 @@
 # Identidad
-Falta el logotipo original del propietario. El monograma tipográfico de la cabecera es provisional, implementado en `src/components/header.tsx`.
-Reemplazar `Brand` por `next/image` al recibir un SVG/PNG aprobado. No se presenta este monograma como el logo original.
+
+`barber-luke.png` es el logo original entregado por el propietario, conservado sin alterar sus letras ni colores.
+Se utiliza con `next/image` en la cabecera, el pie, el medallón del hero y la sección de marca. El medallón tiene giro 3D suave, reflejos y respuesta al cursor; permite pausar y respeta movimiento reducido. También se usa como icono y en la imagen para compartir.

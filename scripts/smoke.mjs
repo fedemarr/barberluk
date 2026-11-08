@@ -17,8 +17,8 @@ const routes = [
   ['/terminos', 200],
   ['/robots.txt', 200],
   ['/sitemap.xml', 200],
-  ['/studio/chair.svg', 200],
-  ['/icon.svg', 200],
+  ['/brand/barber-luke.png', 200],
+  ['/_next/image?url=%2Fbrand%2Fbarber-luke.png&w=640&q=75', 200],
   ['/opengraph-image', 200],
   ['/mis-turnos', 307],
   ['/perfil', 307],
@@ -42,7 +42,9 @@ for (const [path, status] of routes) {
 }
 const r = await fetch(base);
 const html = await r.text();
-assert.ok(html.includes('Tu estilo.'));
+assert.ok(html.includes('EL CORTE.'));
+assert.ok(html.includes('barber-luke.png'));
+assert.ok(!html.includes('/studio/chair.svg'));
 assert.equal(r.headers.get('x-frame-options'), 'DENY');
 assert.equal(r.headers.get('x-content-type-options'), 'nosniff');
 const availability = await fetch(`${base}/api/availability?day=2026-11-08`);

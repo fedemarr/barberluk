@@ -1,11 +1,17 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 export function Brand() {
   return (
     <Link className="brand" href="/" aria-label="Barber Luke, inicio">
-      <span className="monogram" aria-hidden="true">
-        BL<span>✦</span>
-      </span>
+      <Image
+        className="brand-logo"
+        src="/brand/barber-luke.png"
+        alt=""
+        width={64}
+        height={64}
+        sizes="64px"
+      />
       <span>
         BARBER LUKE<small>BARBERÍA & ESTILO</small>
       </span>
@@ -20,7 +26,7 @@ export function Header() {
         <nav className="desktop-nav" aria-label="Navegación principal">
           <Link href="/#experiencia">El estudio</Link>
           <Link href="/#servicios">Servicios</Link>
-          <Link href="/#galeria">La identidad</Link>
+          <Link href="/#galeria">La firma</Link>
           <Link href="/mis-turnos">Mis turnos</Link>
         </nav>
         <Link href="/reservar" className="button small">
@@ -31,7 +37,7 @@ export function Header() {
           <nav>
             <Link href="/#experiencia">El estudio</Link>
             <Link href="/#servicios">Servicios</Link>
-            <Link href="/#galeria">La identidad</Link>
+            <Link href="/#galeria">La firma</Link>
             <Link href="/mis-turnos">Mis turnos</Link>
             <Link href="/perfil">Mi perfil</Link>
           </nav>

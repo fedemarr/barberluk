@@ -7,7 +7,7 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 ## Fases implementadas
 
 1. **Estructura y estilos:** Next.js/TypeScript estricto, Tailwind, tokens, navegación responsive y componentes reutilizables.
-2. **Landing:** hero editorial, secciones de experiencia, servicios persistentes, identidad/galería temporal, proceso y contacto verificado configurable. Motion con movimiento reducido, foco visible, enlace de salto y recursos SVG locales. Fotos y logo original pendientes.
+2. **Landing:** composición de cartel de barbería, tipografía condensada, dorado intenso, carta de servicios persistentes, manifiesto, sección de marca y contacto configurable. Logo original recibido e integrado con efecto de medallón 3D, brillo y respuesta al cursor. Se respetan movimiento reducido, pausa manual y foco visible. Fotografías pendientes.
 3. **Datos y auth:** migración PostgreSQL, RLS, permisos mínimos, perfiles, SSR Google OAuth, callback y rutas protegidas. Integración escrita; OAuth real pendiente de credenciales.
 4. **Reservas:** RPC atómica con exclusión GiST, idempotencia, cuotas, agenda semanal, cierres, descansos, excepciones, bloqueos, conservación de snapshots, cancelación/reprogramación hasta 24 h, rollback de cambios incompatibles.
 5. **Portal y correos:** historial propio, perfil, cancelación confirmada por el usuario y reprogramación. Outbox transaccional, leases y Resend con reintentos. Envío real pendiente de configuración.
@@ -26,7 +26,14 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 - Auditoría completa de dependencias: sin vulnerabilidades reportadas. Se actualizó la dependencia transitiva `minimatch` del parser de TypeScript mediante un override; no hizo falta degradar Next.js.
 - 25 comprobaciones HTTP sin credenciales: landing, reserva, ingreso, legales, SEO, assets, redirección de nueve rutas privadas, exportación denegada, cron protegido, validación de fechas y 404. Las rutas privadas redirigen desde proxy antes del streaming.
 
-## Límites y pendientes
+## Rediseño con el logo del propietario
+
+- Se recibió `e5d40bfe-afb5-4078-9bb2-67d83d4f5802.png` y se copió sin modificar a `public/brand/barber-luke.png`.
+- El logo reemplaza al sillón en el hero y al monograma de cabecera/pie; se incorporó también al icono y a la imagen para compartir.
+- Nueva composición visual: Bebas Neue, titulares de cartel, negro cálido, oro más intenso, franja diagonal y servicios sobre una pizarra oscura. Se retiraron las composiciones abstractas anteriores y su vista ampliada.
+- Efecto del logo: giro oscilante en 3D, reflejo que cruza la superficie, órbita lenta y respuesta al puntero. Incluye botón de pausa y respeta `prefers-reduced-motion`; no requiere WebGL.
+- La integración de reservas, permisos y finanzas conserva su implementación.
+- Verificado después del rediseño: lint, compilación de producción con TypeScript y 25 comprobaciones HTTP, incluida la versión optimizada del logo. El archivo de marca conserva exactamente el SHA-256 del original entregado.
 
 ## Publicación verificada
 
@@ -41,7 +48,7 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 
 - No se verificaron Google OAuth, Supabase alojado ni entrega de Resend porque aún no se recibieron sus credenciales. La DB local emula `auth.uid()` para probar políticas; no simula un login aprobado.
 - La herramienta de navegador no pudo acceder al host de browser y Windows detuvo la revisión porque no pudo identificar la URL con suficiente confianza. No se afirma haber hecho QA visual ni E2E responsive. Requiere revisión posterior en navegador/móvil.
-- No se incluyen fotos del estudio, cortes reales ni logo original. La galería es una composición editorial temporal con vista ampliada mediante diálogo nativo (cierre por Escape y restauración de foco); falta incorporar fotografías reales. No hay reseñas inventadas.
+- El logo original ya está incluido. Faltan fotografías del estudio y cortes reales; mientras tanto, el sitio utiliza composiciones tipográficas y el sello de la marca. No hay fotos ni reseñas inventadas.
 - Configuración de marca, logo y plantilla de correo se actualiza en código; no hay CMS de uploads ni editor visual de emails. La dirección y redes se administran desde el panel.
 - No hay pagos online, recordatorios 24 h, reembolsos, conciliación ni correcciones contables de cobros. El modelo actual permite un cobro completo por turno; correcciones deben diseñarse con asientos compensatorios en una fase posterior.
 - El cron diario drena hasta 20 eventos por ejecución. Para un volumen mayor o reintentos rápidos, aumentar frecuencia con un programador compatible. Tras 8 fallas se requiere revisión.
@@ -49,4 +56,4 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 
 ## Mejoras premium sugeridas
 
-Tres prioridades UX: revisión móvil con usuarios reales, contacto contextual para cancelaciones fuera de plazo y agenda de próximos horarios al abrir la reserva. Dos mejoras visuales: incorporar fotografías reales y reemplazar el monograma por el logo original aprobado. Interacción futura: comparar antes/después de trabajos reales con autorización de los clientes.
+Tres prioridades UX: revisión móvil con usuarios reales, contacto contextual para cancelaciones fuera de plazo y agenda de próximos horarios al abrir la reserva. Dos mejoras visuales: incorporar fotografías reales y una secuencia breve del trabajo en el estudio. Interacción futura: comparar antes/después de trabajos reales con autorización de los clientes.

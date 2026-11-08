@@ -6,7 +6,7 @@ Plataforma en español argentino: landing editorial negro/dorado, reservas de un
 
 ## Estado real
 
-La implementación funciona sin credenciales para mostrar la landing y los estados de configuración pendiente. **No inventa servicios, precios, usuarios ni turnos.** La agenda se instala deshabilitada; la integración real con Supabase, Google y Resend requiere la configuración de [SETUP.md](SETUP.md). Las ilustraciones y el monograma son provisionales, no fotos del estudio ni el logo original. Ver [PROGRESS.md](PROGRESS.md) para las pruebas y límites de verificación.
+La implementación funciona sin credenciales para mostrar la landing y los estados de configuración pendiente. **No inventa servicios, precios, usuarios ni turnos.** La agenda se instala deshabilitada; la integración real con Supabase, Google y Resend requiere la configuración de [SETUP.md](SETUP.md). El sitio utiliza el logo original entregado por el propietario y un diseño de cartel negro/dorado con medallón 3D; las fotografías del estudio todavía están pendientes. Ver [PROGRESS.md](PROGRESS.md) para las pruebas y límites de verificación.
 
 ## Desarrollo
 
