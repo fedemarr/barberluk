@@ -1,0 +1,23 @@
+name: Verificar Barber Luke
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: docker run --name barberluke-test-db -e POSTGRES_PASSWORD=local-test-only -d postgres:17-alpine
+      - name: Esperar PostgreSQL
+        run: for i in $(seq 1 30); do docker exec barberluke-test-db pg_isready -U postgres && break; sleep 1; done
+      - run: npm run test:db
+      - run: npm run build
+      - name: Iniciar servidor para smoke
+        run: npm run start -- --port 3001 > /tmp/barber-luke.log 2>&1 &
+      - run: npm run test:smoke
