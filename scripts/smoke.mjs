@@ -12,6 +12,15 @@ for (let i = 0; i < 30; i++) {
 const routes = [
   ['/', 200],
   ['/reservar', 200],
+  ['/demo/reservar', 200],
+  ['/demo/admin', 200],
+  ['/demo/admin/agenda', 200],
+  ['/demo/admin/disponibilidad', 200],
+  ['/demo/admin/servicios', 200],
+  ['/demo/admin/clientes', 200],
+  ['/demo/admin/finanzas', 200],
+  ['/demo/admin/configuracion', 200],
+  ['/demo/admin/no-existe', 404],
   ['/ingresar', 200],
   ['/privacidad', 200],
   ['/terminos', 200],
@@ -38,6 +47,11 @@ for (const [path, status] of routes) {
   const r = await fetch(base + path, { redirect: 'manual' });
   assert.equal(r.status, status, path);
   if (status === 307) assert.ok(r.headers.get('location')?.includes('/ingresar'), path);
+  if (path.startsWith('/demo/') && status === 200) {
+    const html = await r.text();
+    assert.ok(html.includes('VISTA DE DEMOSTRACIÓN'), path);
+    assert.ok(html.includes('noindex'), path);
+  }
   console.log(`PASS ${status} ${path}`);
 }
 const r = await fetch(base);

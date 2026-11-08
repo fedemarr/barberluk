@@ -1,10 +1,12 @@
 'use client';
 import { useActionState, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Check, CalendarDays, Clock3 } from 'lucide-react';
+import { ArrowRight, Check, Clock3 } from 'lucide-react';
 import { book, adminMutation, changeAppointment } from '@/lib/actions';
 import { money, localDay, dateTime } from '@/lib/format';
 import type { Service, ActionState } from '@/lib/types';
+import { BookingCalendar } from './booking-calendar';
+import { shiftDay } from '@/lib/calendar';
 type Slot = { starts_at: string; ends_at: string };
 export function Booking({
   services,
@@ -82,8 +84,6 @@ export function Booking({
   const selected = services.find((s) => s.id === service);
   const remember = () =>
     sessionStorage.setItem('barber-luke-selection', JSON.stringify({ service, day, start }));
-  const max = new Date();
-  max.setDate(max.getDate() + horizon);
   if (state.success)
     return (
       <div className="confirmation panel">
@@ -148,24 +148,16 @@ export function Booking({
             <span>{rescheduleId ? '01' : '02'}</span>
             <h2>Encontrá tu momento</h2>
           </div>
-          <label className="field">
-            <span>
-              <CalendarDays size={16} /> Fecha · Buenos Aires
-            </span>
-            <input
-              aria-label="Fecha del turno"
-              type="date"
-              min={localDay()}
-              max={localDay(max)}
-              value={day}
-              onChange={(e) => {
-                setDay(e.target.value);
-                setStart('');
-              }}
-              disabled={!enabled}
-              required
-            />
-          </label>
+          <BookingCalendar
+            value={day}
+            min={localDay()}
+            max={shiftDay(localDay(), horizon)}
+            disabled={!enabled}
+            onChange={(value) => {
+              setDay(value);
+              setStart('');
+            }}
+          />
           <div className="slot-grid" aria-live="polite">
             {loading ? (
               <p>Consultando agenda…</p>

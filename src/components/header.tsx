@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import { configured } from '@/lib/supabase';
 export function Brand() {
   return (
     <Link className="brand" href="/" aria-label="Barber Luke, inicio">
@@ -27,7 +28,9 @@ export function Header() {
           <Link href="/#experiencia">El estudio</Link>
           <Link href="/#servicios">Servicios</Link>
           <Link href="/#galeria">La firma</Link>
-          <Link href="/mis-turnos">Mis turnos</Link>
+          <Link href={configured() ? '/mis-turnos' : '/demo/admin'}>
+            {configured() ? 'Mis turnos' : 'Panel demo'}
+          </Link>
         </nav>
         <Link href="/reservar" className="button small">
           Reservar <ArrowUpRight size={16} />
@@ -39,7 +42,9 @@ export function Header() {
             <Link href="/#servicios">Servicios</Link>
             <Link href="/#galeria">La firma</Link>
             <Link href="/mis-turnos">Mis turnos</Link>
-            <Link href="/perfil">Mi perfil</Link>
+            <Link href={configured() ? '/perfil' : '/demo/admin'}>
+              {configured() ? 'Mi perfil' : 'Ver panel demo'}
+            </Link>
           </nav>
         </details>
       </div>
@@ -56,7 +61,9 @@ export function Footer() {
       <div className="footer-links">
         <Link href="/reservar">Reservar turno</Link>
         <Link href="/mis-turnos">Mis turnos</Link>
-        <Link href="/admin">Administración</Link>
+        <Link href={configured() ? '/admin' : '/demo/admin'}>
+          {configured() ? 'Administración' : 'Administración · demo'}
+        </Link>
       </div>
       <div className="footer-links">
         <Link href="/privacidad">Privacidad</Link>

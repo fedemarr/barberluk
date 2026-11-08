@@ -2,6 +2,8 @@
 
 ## 1. Supabase
 
+La demostración está disponible sin conectar servicios: `/reservar` (cuando falta Supabase), `/demo/reservar` y `/demo/admin`. Trabaja exclusivamente con datos de ejemplo en la pestaña. Al configurar Supabase, `/reservar` pasa al flujo real; los ejemplos no se importan a la base ni se convierten en turnos reales. No se debe desactivar la protección de `/admin` para enseñar el panel: usar su ruta `/demo/admin`.
+
 1. Crear o elegir el proyecto destinado exclusivamente a Barber Luke. No ejecutar esta migración sobre una base ajena ni sobre un esquema con tablas homónimas sin revisar compatibilidad.
 2. En SQL Editor ejecutar **completo** `supabase/migrations/202611050001_core.sql`. Alternativa: vincular la CLI Supabase y aplicar migraciones con `supabase db push`. La migración está envuelta en una transacción y no instala datos ficticios.
 3. En Project Settings / API obtener la URL del proyecto y la clave pública publishable. En versiones anteriores, la clave `anon` funciona en la misma variable pública.

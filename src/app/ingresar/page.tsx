@@ -30,6 +30,9 @@ export default async function Page({
       ) : (
         <p className="message">
           Estamos preparando el acceso con Google. La agenda online todavía no está habilitada.
+          <Link className="text-link" href="/demo/admin">
+            Recorrer el panel de demostración ↗
+          </Link>
         </p>
       )}
       <small>

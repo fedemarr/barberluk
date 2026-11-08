@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, Cormorant_Garamond, Manrope } from 'next/font/google';
 import { Header, Footer } from '@/components/header';
 import './globals.css';
+import './booking.css';
 import { siteUrl } from '@/lib/site-url';
 const sans = Manrope({ subsets: ['latin'], variable: '--font-sans' });
 const poster = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-poster' });

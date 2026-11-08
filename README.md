@@ -1,12 +1,14 @@
 # Barber Luke
 
-Sitio publicado para revisión: **https://barberluk.vercel.app**. Las reservas permanecen cerradas hasta configurar los servicios externos y cargar datos reales del estudio.
+Sitio publicado para revisión: **https://barberluk.vercel.app**. Podés recorrer la [agenda de demostración](https://barberluk.vercel.app/reservar) y el [panel del barbero de muestra](https://barberluk.vercel.app/demo/admin). Las reservas reales permanecen cerradas hasta configurar los servicios externos y cargar datos del estudio.
 
 Plataforma en español argentino: landing editorial negro/dorado, reservas de un barbero, portal con Google y administración de agenda y finanzas. Next.js App Router + TypeScript, Tailwind, Motion, Supabase PostgreSQL/Auth y Resend.
 
 ## Estado real
 
-La implementación funciona sin credenciales para mostrar la landing y los estados de configuración pendiente. **No inventa servicios, precios, usuarios ni turnos.** La agenda se instala deshabilitada; la integración real con Supabase, Google y Resend requiere la configuración de [SETUP.md](SETUP.md). El sitio utiliza el logo original entregado por el propietario y un diseño de cartel negro/dorado con medallón 3D; las fotografías del estudio todavía están pendientes. Ver [PROGRESS.md](PROGRESS.md) para las pruebas y límites de verificación.
+El modo real usa datos persistentes de Supabase. La agenda real se instala deshabilitada; la integración con Supabase, Google y Resend requiere la configuración de [SETUP.md](SETUP.md). Para mostrar la experiencia antes de recibir la base de datos, se incorporó una demo explícitamente identificada con servicios, precios, clientes y turnos de ejemplo. No presenta esos valores como datos reales del negocio. El sitio utiliza el logo original del propietario y un diseño de cartel negro/dorado; las fotografías del estudio siguen pendientes.
+
+La demo de `/reservar` aparece únicamente si faltan las variables públicas de Supabase. Si Supabase está configurado, esa ruta utiliza la reserva real y sus estados reales de apertura/cierre; una falla de conexión no activa datos ficticios. Las rutas explícitas `/demo/reservar` y `/demo/admin` sirven siempre como muestra aislada, sin llamadas a las APIs privadas, sin OAuth simulado y sin correos. Los cambios se guardan en `sessionStorage` de esa pestaña y pueden reiniciarse desde el panel. Los valores se renuevan al cambiar el día de Buenos Aires. `/admin` y sus acciones permanecen protegidos por la autorización real.
 
 ## Desarrollo
 
@@ -19,7 +21,7 @@ Copy-Item .env.example .env.local
 npm run dev
 ```
 
-Abrir http://localhost:3000. Sin configuración externa, se puede recorrer la landing, reservar (agenda pendiente), ingresar y textos legales; las rutas privadas redirigen al acceso.
+Abrir http://localhost:3000. Sin configuración externa, se puede probar el calendario y reservar en demo, abrir `/demo/admin` y recorrer sus módulos. Las rutas privadas reales continúan redirigiendo al acceso.
 
 ```powershell
 npm run lint

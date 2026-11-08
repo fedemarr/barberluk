@@ -1,9 +1,21 @@
 import { Booking } from '@/components/booking';
 import { publicData } from '@/lib/data';
 import { session } from '@/lib/auth';
+import { configured } from '@/lib/supabase';
+import { DemoExperience } from '@/components/demo/experience';
+import { localDay } from '@/lib/format';
 export const dynamic = 'force-dynamic';
-export const metadata = { title: 'Reservar turno' };
+export function generateMetadata() {
+  return {
+    title: configured() ? 'Reservar turno' : 'Agenda de demostración',
+    robots: configured() ? undefined : { index: false, follow: false },
+  };
+}
 export default async function Page() {
+  if (!configured()) {
+    const now = new Date();
+    return <DemoExperience today={localDay(now)} now={now.toISOString()} />;
+  }
   const [{ services, settings }, s] = await Promise.all([publicData(), session()]);
   return (
     <div className="page-shell">

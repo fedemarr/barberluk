@@ -6,11 +6,15 @@ import { money } from '@/lib/format';
 import { Reveal } from '@/components/motion';
 import { BrandEmblem } from '@/components/brand-emblem';
 import './landing.css';
+import { configured } from '@/lib/supabase';
+import { DEMO_SERVICES } from '@/lib/demo-model';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const { services, settings } = await publicData();
+  const demo = !configured(),
+    displayServices = demo ? DEMO_SERVICES : services;
   return (
     <div className="luke-home">
       {/* El logo original ocupa el lugar del sillón. */}
@@ -136,9 +140,10 @@ export default async function Home() {
               <span>BARBER LUKE</span>
               <span>SERVICIOS & ESTILO</span>
             </div>
-            {services.length ? (
+            {demo && <p className="luke-menu-demo-label">DEMO INTERACTIVA · PRECIOS DE EJEMPLO</p>}
+            {displayServices.length ? (
               <div className="luke-menu-list">
-                {services.map((service, index) => (
+                {displayServices.map((service, index) => (
                   <Link href="/reservar" className="luke-menu-item" key={service.id}>
                     <span className="luke-menu-index">{String(index + 1).padStart(2, '0')}</span>
                     <div>
@@ -147,7 +152,7 @@ export default async function Home() {
                     </div>
                     <div className="luke-menu-price">
                       <strong>{money(service.price_cents)}</strong>
-                      <small>{settings?.slot_minutes} MIN</small>
+                      <small>{settings?.slot_minutes ?? 40} MIN</small>
                     </div>
                     <ArrowUpRight size={24} />
                   </Link>

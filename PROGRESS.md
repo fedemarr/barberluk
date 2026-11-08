@@ -35,7 +35,16 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 - La integración de reservas, permisos y finanzas conserva su implementación.
 - Verificado después del rediseño: lint, compilación de producción con TypeScript y 25 comprobaciones HTTP, incluida la versión optimizada del logo. El archivo de marca conserva exactamente el SHA-256 del original entregado.
 
-## Publicación verificada
+## Agenda y panel de demostración
+
+- Se agregó calendario mensual reutilizable al flujo de reserva, con navegación entre meses, límites de anticipación y formato de Buenos Aires.
+- Sin Supabase, `/reservar` ofrece una demo identificada: servicios y precios de muestra, horarios libres/ocupados, selección y confirmación simulada. Los ejemplos no se envían a la base ni generan correos.
+- `/demo/admin` incluye resumen, agenda por día/semana/mes, disponibilidad, edición de servicios, clientes de muestra, cobros, gastos, CSV y configuración de ejemplo. Un turno de muestra creado en la reserva aparece en ese panel dentro de la misma pestaña.
+- Persistencia acotada a `sessionStorage`, con validación del contenido, reinicio y fecha de Buenos Aires. La agenda real y las políticas de `/admin` conservan su protección; la demo no recibe claves privadas ni invoca sus mutaciones.
+- Se aprobaron 14 pruebas unitarias en total: las 5 previas y 9 sobre fechas, agenda demo, solapamientos, cancelación, descansos, cierres, snapshots y validación del almacenamiento.
+- Compilación y lint correctos. Se aprobaron 34 comprobaciones HTTP, incluyendo todos los módulos de muestra, su etiqueta demo/noindex y el rechazo de accesos sin sesión a `/admin` y a las APIs privadas reales.
+
+## Publicación inicial verificada
 
 - Sitio: https://barberluk.vercel.app
 - Proyecto: https://vercel.com/fmcodes-projects/barberluk
