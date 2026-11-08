@@ -28,6 +28,17 @@ La carpeta contenía solamente `BARBER_LUKE_PROMPT_MAESTRO_CODEX.md`. El remoto 
 
 ## Límites y pendientes
 
+## Publicación verificada
+
+- Sitio: https://barberluk.vercel.app
+- Proyecto: https://vercel.com/fmcodes-projects/barberluk
+- Código: https://github.com/fedemarr/barberluk
+- Primer despliegue de producción: `dpl_2riSPziU2EvjjN4a34Ai67yT4Ztm`, estado Ready.
+- Las 25 comprobaciones HTTP también pasaron sobre el dominio público, sin sesión ni credenciales de Supabase.
+- GitHub Actions ejecutó correctamente lint, tipos, 5 tests unitarios, 26 verificaciones PostgreSQL, build y 25 comprobaciones HTTP en Linux. Ejecución: https://github.com/fedemarr/barberluk/actions/runs/42532812743
+
+## Límites y pendientes de activación
+
 - No se verificaron Google OAuth, Supabase alojado ni entrega de Resend porque aún no se recibieron sus credenciales. La DB local emula `auth.uid()` para probar políticas; no simula un login aprobado.
 - La herramienta de navegador no pudo acceder al host de browser y Windows detuvo la revisión porque no pudo identificar la URL con suficiente confianza. No se afirma haber hecho QA visual ni E2E responsive. Requiere revisión posterior en navegador/móvil.
 - No se incluyen fotos del estudio, cortes reales ni logo original. La galería es una composición editorial temporal con vista ampliada mediante diálogo nativo (cierre por Escape y restauración de foco); falta incorporar fotografías reales. No hay reseñas inventadas.

@@ -1,5 +1,7 @@
 # Barber Luke
 
+Sitio publicado para revisión: **https://barberluk.vercel.app**. Las reservas permanecen cerradas hasta configurar los servicios externos y cargar datos reales del estudio.
+
 Plataforma en español argentino: landing editorial negro/dorado, reservas de un barbero, portal con Google y administración de agenda y finanzas. Next.js App Router + TypeScript, Tailwind, Motion, Supabase PostgreSQL/Auth y Resend.
 
 ## Estado real
